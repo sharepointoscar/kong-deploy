@@ -11,6 +11,11 @@ Kong’s Ingress Controller implements authentication, transformations, and othe
 ```bash
 > $ kubectl create -f kong_dbless.yaml
 ```
+Once the resources have been created, get the Proxy IP and store as an enviornment variable.
+
+```bash
+export PROXY_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" service -n kong kong-proxy)
+```
 
 ###  Modify Resources
 ```bash
